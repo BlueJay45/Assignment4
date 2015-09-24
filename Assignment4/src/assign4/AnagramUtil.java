@@ -203,6 +203,10 @@ public class AnagramUtil
 
 		try (Scanner input = new Scanner(new File(filename));)
 		{
+			if(!input.hasNext())
+			{
+				return new String[0];
+			}
 			while (input.hasNext())
 			{
 				words.add(input.nextLine());
@@ -233,6 +237,10 @@ public class AnagramUtil
 
 		try (Scanner input = new Scanner(new File(filename));)
 		{
+			if(!input.hasNext())
+			{
+				return new String[0];
+			}
 			while (input.hasNext())
 			{
 				words.add(input.nextLine());
@@ -263,9 +271,9 @@ public class AnagramUtil
 	 */
 	public static String[] getLargestAnagramGroupUsingSortMethod(String[] s)
 	{
-		if (s.length == 0)
+		if (s == null)
 		{
-			return null;
+			return new String[0];
 		}
 
 		Arrays.sort(s, new ArraySortStringComparator());
@@ -289,6 +297,11 @@ public class AnagramUtil
 				mode = s[i];
 				highest = current;
 			}
+		}
+		
+		if(highest == 1)
+		{
+			return new String[0];
 		}
 
 		ArrayList<String> largestAnagramGroup = new ArrayList<String>();
